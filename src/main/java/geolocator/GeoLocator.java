@@ -35,6 +35,11 @@ public class GeoLocator {
      * @return an object wrapping the geolocation information returned
      * @throws IOException if any I/O error occurs
      */
+
+    public GeoLocation getGeoLocation() throws IOException {
+        return getGeoLocation(null);
+    }
+
     public GeoLocation getGeoLocation(String ipAddrOrHost) throws IOException {
         URL url;
         if (ipAddrOrHost != null) {
