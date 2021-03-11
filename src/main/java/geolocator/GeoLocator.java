@@ -11,18 +11,30 @@ import com.google.common.net.UrlEscapers;
 
 import org.apache.commons.io.IOUtils;
 
-public class GeoLocator {
+/**
+        * Class for obtaining geolocation information of an IP address. The class uses
+ * the <a href="http://ip-api.com/">IP-API.com</a> service.
+        */
 
+public class GeoLocator {
+    /**
+     * URI of the geolocation service.
+     */
     public static final String GEOLOCATOR_SERVICE_URI = "http://ip-api.com/json/";
 
     private static ObjectMapper OBJECT_MAPPER = new ObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 
+    /**
+     * Creates a {@code GeoLocator} object.
+     */
     public GeoLocator() {}
 
-    public GeoLocation getGeoLocation() throws IOException {
-        return getGeoLocation(null);
-    }
-
+    /**
+     * Returns geolocation information about the JVM running the application.
+     *
+     * @return an object wrapping the geolocation information returned
+     * @throws IOException if any I/O error occurs
+     */
     public GeoLocation getGeoLocation(String ipAddrOrHost) throws IOException {
         URL url;
         if (ipAddrOrHost != null) {
